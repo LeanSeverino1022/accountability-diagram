@@ -4,7 +4,7 @@
 $( document ).ready(function()  {
 
     myApp.editSeatOverlay.init();
-    myApp. seatPopup.init();
+    myApp.seatPopup.init();
 
     window.wysiEditor = new wysihtml5.Editor('wysihtml-textInput', {
         toolbar: 'wysihtml-toolbar',
@@ -17,12 +17,12 @@ var myApp = (function() {
 
     //nodes represents the seats.
     const nodeWidth = 150,
-        nodeHeight = 180,
-        nodeTextSize = "16px",
-        // horizontal and vertical gap
-        verticalGap = 60,
-        horizontalGap = 20,
-        scaleExtent = [0.3, 5] //used in zoom
+          nodeHeight = 180,
+          nodeTextSize = "16px",
+          // horizontal and vertical gap
+          verticalGap = 60,
+          horizontalGap = 20,
+          scaleExtent = [0.3, 5]; //used in zoom
 
     window.dummyId = 0; //id set to nodes
     let duration = 700;
@@ -84,15 +84,13 @@ var myApp = (function() {
             .attr("width", nodeWidth)
             .attr("rx", 10)
             .attr("ry", 10)
-            .style("fill", function(d){
-                return d.depth === 0 ? "#fff" : d.depth === 1 ? "blue" : "green";
-            })
+            .style("fill", fillColor)
             .attr("class", 'nodeRect')
             .attr("transform", function (d) { return "translate(" + (-nodeWidth / 2) + "," + (-nodeHeight) + ")"; });
 
 
         nodeEnter.append("circle")
-            .attr("r", 7)
+            .attr("r", 4)
             .on("click", function (d) {
                 nodeClicked(d, this);
             });
@@ -154,14 +152,14 @@ var myApp = (function() {
         //Node Action Icons - Add
         nodeButtonsContainer.filter( seatCanAddChild ).append("path")
             .attr("d", "M12 24c-6.627 0-12-5.372-12-12s5.373-12 12-12c6.628 0 12 5.372 12 12s-5.372 12-12 12zM12 3c-4.97 0-9 4.030-9 9s4.030 9 9 9c4.971 0 9-4.030 9-9s-4.029-9-9-9zM13.5 18h-3v-4.5h-4.5v-3h4.5v-4.5h3v4.5h4.5v3h-4.5v4.5z")
-            .attr("transform", `translate( ${0} , ${-20} )`) //NOTE: MODIFY POSITION OF ADD BUTTON HERE
-            .attr("class", "function-btn add")
+            .attr("transform", `translate( ${-50} , ${30} )`) //NOTE: MODIFY POSITION OF ADD BUTTON HERE
+            .attr("class", "function-btn")
 
         nodeButtonsContainer.filter( seatCanAddChild ).append("rect")
             .attr("class", "function-bg add")
             .attr("width", "24px")
             .attr("height", "24px")
-            .attr("transform", `translate( ${0} , ${-20} )`)
+            .attr("transform", `translate( ${-50} , ${30} )`)
             .on("click", function (d) {
                 addNode(d);
             });
@@ -169,29 +167,30 @@ var myApp = (function() {
         //Node Action Icons - Remove
         nodeButtonsContainer.filter(seatCanBeDeleted).append("path")
             .attr("d", "M3.514 20.485c-4.686-4.686-4.686-12.284 0-16.97 4.688-4.686 12.284-4.686 16.972 0 4.686 4.686 4.686 12.284 0 16.97-4.688 4.687-12.284 4.687-16.972 0zM18.365 5.636c-3.516-3.515-9.214-3.515-12.728 0-3.516 3.515-3.516 9.213 0 12.728 3.514 3.515 9.213 3.515 12.728 0 3.514-3.515 3.514-9.213 0-12.728zM8.818 17.303l-2.121-2.122 3.182-3.182-3.182-3.182 2.121-2.122 3.182 3.182 3.182-3.182 2.121 2.122-3.182 3.182 3.182 3.182-2.121 2.122-3.182-3.182-3.182 3.182z")
-            .attr("transform", `translate( ${20} , ${5} )`) //NOTE: MODIFY POSITION OF REMOVE BUTTONS HERe
-            .attr("class", "function-btn remove");
+            .attr("transform", `translate( ${-22} , ${30} )`) //NOTE: MODIFY POSITION OF REMOVE BUTTONS HERe
+            .attr("class", "function-btn");
 
         nodeButtonsContainer.filter(seatCanBeDeleted).append("rect")
             .attr("class", "function-bg remove")
             .attr("width", "24px")
             .attr("height", "24px")
-            .attr("transform", `translate( ${20} , ${5} )`)
+            .attr("transform", `translate( ${-22} , ${30} )`)
             .on("click", deleteNode);
 
         // Node Action Icons - more(ellipsis)
         nodeButtonsContainer.append("path")
-            .attr("d", "M12.572 2.731c-5.436 0-9.841 4.405-9.841 9.841S7.136 22.413 12.572 22.413c5.436 0 9.841-4.405 9.841-9.841S18.008 2.731 12.572 2.731M12.572 21.377c-4.856 0-8.805-3.949-8.805-8.804S7.715 3.768 12.572 3.768c4.855 0 8.805 3.949 8.805 8.805S17.427 21.377 12.572 21.377M12.572 10.76c-.999 0-1.813.812-1.813 1.813S11.572 14.386 12.572 14.386s1.812-.813 1.812-1.814S13.571 10.76 12.572 10.76M12.572 13.35c-.427 0-.777-.349-.777-.777S12.144 11.795 12.572 11.795 13.349 12.145 13.349 12.572 12.999 13.35 12.572 13.35M17.751 10.76c-.999 0-1.813.812-1.813 1.813s.813 1.814 1.813 1.814 1.813-.813 1.813-1.814S18.751 10.76 17.751 10.76M17.751 13.35c-.427 0-.777-.349-.777-.777s.349-.777.777-.777S18.528 12.145 18.528 12.572 18.179 13.35 17.751 13.35M7.392 10.76c-.999 0-1.813.812-1.813 1.813s.812 1.814 1.813 1.814S9.205 13.572 9.205 12.572 8.392 10.76 7.392 10.76M7.392 13.35c-.427 0-.777-.349-.777-.777S6.965 11.795 7.392 11.795 8.169 12.145 8.169 12.572 7.82 13.35 7.392 13.35")
-            .attr("transform", `translate( ${0} , ${30} )`)
-            .attr("stroke", "#FF6600")
-            .attr("stroke-width", "1.5")
+            .attr("d", "M13.829 3.004c-5.98 0-10.825 4.846-10.825 10.825S7.85 24.654 13.829 24.654c5.98 0 10.825-4.846 10.825-10.825S19.809 3.004 13.829 3.004M13.829 23.515c-5.342 0-9.686-4.344-9.686-9.684S8.487 4.145 13.829 4.145c5.341 0 9.686 4.344 9.686 9.686S19.17 23.515 13.829 23.515M13.829 11.836c-1.099 0-1.994.893-1.994 1.994S12.729 15.825 13.829 15.825s1.993-.894 1.993-1.995S14.928 11.836 13.829 11.836M13.829 14.685c-.47 0-.855-.384-.855-.855S13.358 12.975 13.829 12.975 14.684 13.36 14.684 13.829 14.299 14.685 13.829 14.685M19.526 11.836c-1.099 0-1.994.893-1.994 1.994s.894 1.995 1.994 1.995 1.994-.894 1.994-1.995S20.626 11.836 19.526 11.836M19.526 14.685c-.47 0-.855-.384-.855-.855s.384-.855.855-.855S20.381 13.36 20.381 13.829 19.997 14.685 19.526 14.685M8.131 11.836c-1.099 0-1.994.893-1.994 1.994s.893 1.995 1.994 1.995S10.126 14.929 10.126 13.829 9.231 11.836 8.131 11.836M8.131 14.685c-.47 0-.855-.384-.855-.855S7.662 12.975 8.131 12.975 8.986 13.36 8.986 13.829 8.602 14.685 8.131 14.685")
+            .attr("transform", `translate( ${5} , ${29} )`)
+            .attr("stroke", "#298BDD")
+            .attr("stroke-width", "1.3")
             .attr("class", "function-btn ")
 
         nodeButtonsContainer.append("rect")
             .attr("class", "function-bg more")
             .attr("width", "24px")
             .attr("height", "24px")
-            .attr("transform", `translate( ${0} , ${30} )`)
+            .attr("transform", `translate( ${5} , ${29} )`)
+            .attr("transform", `translate( ${5} , ${29} )`)
             .on("click", function(d) {
                     selectSeat(d);
                     seatPopup.show(d)
@@ -445,13 +444,35 @@ var myApp = (function() {
         return d.depth > 0 ;
     }
 
+    function fillColor(d) {
+
+        let fill  = '#fff';
+
+        switch (d.depth) {
+            case 0:
+                fill  = '#4795D4';
+                break;
+            case 1:
+                fill  = '#57544F';
+                break;
+            case 2:
+                fill  = '#3F9A89';
+                break;  
+            default:
+                fill  = '#EAAB4D';
+                break;
+        }
+
+        return fill;
+    }
+
 
     /****************************************
     overlays/popup/popovers below
     *****************************************/
 
     // cuurent seat driopdown
-    let seatPopup = {
+    seatPopup = {
 
         init: function() {
             this.container = $(".seat_popup");
@@ -500,7 +521,7 @@ var myApp = (function() {
     };
 
 
-    window.editSeatOverlay = {
+    editSeatOverlay = {
 
         init: function () {
 
@@ -575,10 +596,12 @@ var myApp = (function() {
         }
     };
 
+
+
     return {
         editSeatOverlay,
         seatPopup 
     };
 
-
+    
 })();

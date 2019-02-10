@@ -26,31 +26,36 @@ line {
 }
 .function-btn {
     opacity: 0;
-    fill: #FF6600;
+    fill: #298BDD;
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
-    transition: all .5s ease
+    transition: all .5s ease;
 }
 
-g.node:hover .function-btn {
-    opacity: 1
+
+g.node:hover .function-btn,
+.function-btn:hover {
+    opacity: 1;
 }
 .function-bg {
     cursor: pointer
 }
 
+g.node:hover > rect {
+    stroke: #298BDD;
+    stroke-width:2px;
+}
+
 .nodeRect {
     /*svg rect*/
     stroke-width: 1;
-    stroke: #E8E9EC;
     fill: #fff;
-    /* display: none; */
 }
 
 .node-seat-title, .seat-owner {
     font-size: 16px;
     font-weight: 300;
-    color: #757786;
+    fill: #fff;
     font-family: "Helvetica neue","Segoe UI","Raleway","Lato","Arial",sans-serif;
     line-height: 24px;
     text-align: center;
@@ -64,12 +69,9 @@ g.node:hover .function-btn {
 
 .node circle {
     fill: #757786;
+    /* hide for now */
+    visibility: hidden;
 }
-
-.node:hover circle {
-    fill: #FF6600;
-}
-
 
 
 .rect-node.anchor {
