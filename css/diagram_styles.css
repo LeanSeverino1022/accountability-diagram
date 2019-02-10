@@ -1,3 +1,17 @@
+/* base styles */
+html{
+    font-size: 100%;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+   
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', serif;
+}
+
+
 #diagram_container {
     background-color: #EBEBEB;
 }
@@ -52,15 +66,22 @@ g.node:hover > rect {
     fill: #fff;
 }
 
-.node-seat-title, .seat-owner {
-    font-size: 16px;
+.node-seat-title {  
+    font-size: 1rem;
     font-weight: 300;
     fill: #fff;
-    font-family: "Helvetica neue","Segoe UI","Raleway","Lato","Arial",sans-serif;
     line-height: 24px;
     text-align: center;
     letter-spacing:0px;
-	font-family: "Segoe UI",'Helvetica neue', 'Raleway', 'Lato', Arial, sans-serif;
+}
+
+.seat-owner {  
+    font-size: .8rem;
+    font-weight: 300;
+    fill: #fff;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing:0px;
 }
 
 .node:hover .node-seat-title {
