@@ -1,0 +1,108 @@
+#diagram_container {
+    background-color: #EBEBEB;
+}
+
+/* begin custom elements for svg... */
+rect {
+    fill: none;
+    pointer-events: all
+}
+line {
+    stroke: #efefef;
+    stroke-width: 1.5px
+}
+
+.node {
+    position: relative;
+    display: inline-block;
+    font: 16px;
+    font-weight: 300;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px
+}
+.function-btn {
+    opacity: 0;
+    fill: #FF6600;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+g.node:hover .function-btn {
+    opacity: 1
+}
+.function-bg {
+    cursor: pointer
+}
+
+.nodeRect {
+    /*svg rect*/
+    stroke-width: 1;
+    stroke: #E8E9EC;
+    fill: #fff;
+    /* display: none; */
+}
+
+.node-seat-title, .seat-owner {
+    font-size: 16px;
+    font-weight: 300;
+    color: #757786;
+    font-family: "Helvetica neue","Segoe UI","Raleway","Lato","Arial",sans-serif;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing:0px;
+	font-family: "Segoe UI",'Helvetica neue', 'Raleway', 'Lato', Arial, sans-serif;
+}
+
+.node:hover .node-seat-title {
+    fill: #FF6600;
+}
+
+.node circle {
+    fill: #757786;
+}
+
+.node:hover circle {
+    fill: #FF6600;
+}
+
+
+
+.rect-node.anchor {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    height: 120px;
+    height:120px;
+    width: 280px;
+    margin-bottom: 20px;
+    z-index: 99999999;
+}
+
+
+.seat_popup{ display: none;}
+.seat_popup {
+    width: 300px;
+    padding: 10px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 20px 40px 0 rgba(0,0,0,0.3);
+}
+
+/* helper classes */
+input.big-input {
+    font-size: 20px !important;
+    line-height: 32px;
+    height: 40px;
+    outline: none !important;
+    background-color: #fff;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    box-shadow: none;
+}
+
+
