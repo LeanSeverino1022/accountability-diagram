@@ -11,9 +11,21 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Crimson Text', serif;
 }
 
+#fixed-title {
+    position: fixed;
+    left: 15px; 
+}
+
+#fixed-title p {
+   color: #298BDD;
+   font-weight: 600;
+}
+
+
 
 #diagram_container {
     background-color: #EBEBEB;
+    padding: 10px 0;
 }
 
 /* begin custom elements for svg... */
@@ -29,8 +41,6 @@ line {
 .node {
     position: relative;
     display: inline-block;
-    font: 16px;
-    font-weight: 300;
 }
 
 .link {
@@ -57,7 +67,7 @@ g.node:hover .function-btn,
 
 g.node:hover > rect {
     stroke: #298BDD;
-    stroke-width:2px;
+    stroke-width:3px;
 }
 
 .nodeRect {
@@ -77,21 +87,18 @@ g.node:hover > rect {
 
 .seat-owner {  
     font-size: .8rem;
-    font-weight: 300;
     fill: #fff;
     line-height: 24px;
     text-align: center;
     letter-spacing:0px;
 }
 
-.node:hover .node-seat-title {
-    fill: #FF6600;
-}
-
 .node circle {
-    fill: #757786;
+    fill: #FFDE7A;
+    stroke: grey;
+    
     /* hide for now */
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 

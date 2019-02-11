@@ -90,7 +90,7 @@ var myApp = (function() {
 
 
         nodeEnter.append("circle")
-            .attr("r", 4)
+            .attr("r", 9)
             .on("click", function (d) {
                 nodeClicked(d, this);
             });
@@ -145,7 +145,7 @@ var myApp = (function() {
 
         let nodeButtonsContainer = nodeEnter.append("g")
             .attr("class", "nodeButtons")
-            .attr("transform", "translate( 10, -20 )")
+            .attr("transform", "translate( 10, -10 )")
             .style('fill', '#fff')
 
         //position the icon buttons relative to its nodeButtonsContainer
@@ -378,11 +378,11 @@ var myApp = (function() {
         let self = this;
         data = data || {};
         self.id = ko.observable(data.id || ++dummyId);
-        self.title = ko.observable(data.title || 'data has no title?');
+        self.title = ko.observable(data.title || 'No title yet');
         self.seatOwnerId = ko.observable(data.seatOwnerId);
-        self.seatOwner = ko.observable(data.seatOwner || 'data has no seat name?');
-        self.username = ko.observable(data.username || 'data has no username?');
-        self.description = ko.observable(data.description || 'data has no seat description?');
+        self.seatOwner = ko.observable(data.seatOwner || 'No seatname yet');
+        self.username = ko.observable(data.username || 'No username yet');
+        self.description = ko.observable(data.description || 'No seat description yet');
 
     }
 
@@ -436,7 +436,10 @@ var myApp = (function() {
 
     function seatCanAddChild(d) {
         //disable for visionary
-        return d.depth > 0;
+        // return d.depth > 0; 
+
+        // allow all for now
+        return true;
     }
 
     function seatCanBeDeleted(d) {
@@ -508,8 +511,6 @@ var myApp = (function() {
 
             //set the KO select default value
             viewModel.selectedSeatOwnerId( selectedSeat.seatOwnerId() );
-
-
         },
 
         registerHandlers: function(){
