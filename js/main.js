@@ -483,8 +483,7 @@ var myApp = (function() {
             this.seatOwner = $('.seat-name');
             this.seatUsername = $('.seat-username');
             this.seatDescription = $('.seat-description');
-            this.editButton = $('.edit-seat');
-
+            
             this.registerHandlers();
         },
 
@@ -507,9 +506,8 @@ var myApp = (function() {
         },
 
         registerHandlers: function(){
-            this.editButton.click(function (e) {
-
-            });
+            // add later
+            // $('.edit-seat-open').click(function (e) { //     alert('edit seat') // });
         }
 
     };
