@@ -491,15 +491,8 @@ var myApp = (function() {
         show: function( seatObj ) {
             // init popoverlay plugin
             this.container.popup({
-                tooltipanchor: $('body'),
-                type: 'tooltip',
-                autoopen: true,
-                offsetleft: event.pageX,
-                offsettop: event.pageY,
+                autoopen: true, 
                 autozindex: true,
-                horizontal: 'leftedge',
-                vertical: 'topedge',
-                keepfocus: false,
                 closeelement: ".close-seat-popup",
             });
 
@@ -532,10 +525,9 @@ var myApp = (function() {
 
             //initialize popupoverlay
             this.container.popup({
-                color: "rgba(51, 0, 102, 0.75)",
+                // color: "rgba(51, 0, 102, 0.75)",
                 closeelement: '.edit-seat-close',
                 openelement : '.edit-seat-open',
-                opacity: 1,
                 onopen: function(){
 
                     //viewModel = global variable contains reference to seatsViewModel
