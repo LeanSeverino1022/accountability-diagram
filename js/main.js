@@ -150,12 +150,12 @@ var myApp = (function() {
 
         //position the icon buttons relative to its nodeButtonsContainer
         //Node Action Icons - Add
-        nodeButtonsContainer.filter( seatCanAddChild ).append("path")
+        nodeButtonsContainer.append("path")
             .attr("d", "M12 24c-6.627 0-12-5.372-12-12s5.373-12 12-12c6.628 0 12 5.372 12 12s-5.372 12-12 12zM12 3c-4.97 0-9 4.030-9 9s4.030 9 9 9c4.971 0 9-4.030 9-9s-4.029-9-9-9zM13.5 18h-3v-4.5h-4.5v-3h4.5v-4.5h3v4.5h4.5v3h-4.5v4.5z")
             .attr("transform", `translate( ${-50} , ${30} )`) //NOTE: MODIFY POSITION OF ADD BUTTON HERE
             .attr("class", "function-btn")
 
-        nodeButtonsContainer.filter( seatCanAddChild ).append("rect")
+        nodeButtonsContainer.append("rect")
             .attr("class", "function-bg add")
             .attr("width", "24px")
             .attr("height", "24px")
@@ -256,65 +256,6 @@ var myApp = (function() {
         }
         updateMap(d);
     }
-
-    function hideRocks(d, node) {
-
-        //hide all uncollapsed rock children
-        if (d.children) {
-
-            d.children.forEach(
-                function (child, index) {
-
-                    if (child.title() == 'Rock') {
-
-                        child.parent._children2 ? child.parent._children2.push(child) : child.parent._children2 = [child];
-
-                        child.parent.children.splice(index, 1);
-
-                    } else {
-                        hideRocks(child);
-                    }
-                }
-            )
-        }
-        updateMap(d);
-    }
-
-    function showRocks(d, node) {
-
-        //hide all uncollapsed rock children
-        if (d._children && _children2) {
-            
-            d._children2.forEach( function(child, index ){
-                child.parent._children.push(child) 
-            })
-
-            d._children2 = null;
-
-            if(d._children2) {
-                d_.children2.forEach(
-                    function (child, index) {
-                        
-                    }
-                )
-            }
-
-        
-            child.parent.children2 = null;
-            updateMap(d);
-        }
-    
-    }
-
-    function collapse(d) {
-        if (d.children) {
-            d._children = d.children;
-            d._children.forEach(collapse);
-            d.children = null;
-        }
-        updateMap(d);
-    }
-
 
     function addNode(d) {
 
@@ -433,14 +374,6 @@ var myApp = (function() {
         //window.translate=  zoom.translate();
     }
 
-
-    function seatCanAddChild(d) {
-        //disable for visionary
-        // return d.depth > 0; 
-
-        // allow all for now
-        return true;
-    }
 
     function seatCanBeDeleted(d) {
         //only visionary(top-most level) cannot be deleted
