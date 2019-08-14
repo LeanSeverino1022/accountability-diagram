@@ -38,9 +38,9 @@ function wrap(text) {
             word = words.pop();
         }
 
-
     });
 }
+
 
 
 function ellipsis(text) {
@@ -64,3 +64,5 @@ function ellipsis(text) {
         }
     });
 }
+
+/* lean */

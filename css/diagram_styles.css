@@ -1,4 +1,6 @@
-/* base styles */
+/***********************
+Base styles
+********************** */
 html{
     font-size: 100%;
 }
@@ -21,9 +23,11 @@ h1, h2, h3, h4, h5, h6 {
    font-weight: 500;
 }
 
+/***********************
+Dendrogram styles
+********************** */
 
-
-#diagram_container {
+.mindmap-container {
     background-color: #EBEBEB;
     padding: 10px 0;
 }
@@ -39,8 +43,7 @@ line {
 }
 
 .node {
-    position: relative;
-    display: inline-block;
+    opacity: 0;
 }
 
 .link {
@@ -50,12 +53,10 @@ line {
 }
 .function-btn {
     opacity: 0;
-    fill: #298BDD;
+    fill: #ff6600;
     -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
     transition: all .5s ease;
 }
-
 
 g.node:hover .function-btn,
 .function-btn:hover {
@@ -73,57 +74,60 @@ g.node:hover > rect {
 .nodeRect {
     /*svg rect*/
     stroke-width: 1;
+    stroke: #E8E9EC;
     fill: #fff;
 }
 
-.node-seat-title {  
+.nodeText{  
     font-size: 1rem;
     font-weight: 300;
     fill: #fff;
     line-height: 24px;
     text-align: center;
     letter-spacing:0px;
+    fill: red 12px solid;
 }
 
-.seat-owner {  
+.node-date {  
     font-size: .8rem;
-    fill: #fff;
+    fill: #333;
     line-height: 24px;
     text-align: center;
     letter-spacing:0px;
+    fill: red
 }
 
 .node circle {
     fill: #FFDE7A;
     stroke: grey;
-    
-    /* hide for now */
-    /* visibility: hidden; */
+ 
 }
 
+.node:hover circle {
+    fill: #FFDE7A;
+    stroke: grey;
+}
 
-.rect-node.anchor {
-    position: relative;
+.orientation-btns {
+    position: fixed;
+    top: 30px;
+    right: 50px;
+    font-size: 30px;
+}
+
+/************************************
+update node and show node info POPOVERS styles
+*************************************/
+
+.node-update-popover{
+    display: none;
     background: #fff;
-    border-radius: 10px;
-    height: 120px;
-    height:120px;
-    width: 280px;
-    margin-bottom: 20px;
-    z-index: 99999999;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* width: 400px; */
 }
 
 
-.seat_popup{ display: none;}
-.seat_popup {
-    width: 300px;
-    padding: 10px;
-    border-radius: 4px;
-    background: #fff;
-    box-shadow: 0 20px 40px 0 rgba(0,0,0,0.3);
-}
-
-/* helper classes */
 input.big-input {
     font-size: 20px !important;
     line-height: 32px;
@@ -132,7 +136,53 @@ input.big-input {
     background-color: #fff;
     border: 0;
     border-bottom: 1px solid #ccc;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    padding: 5px;
 }
 
+/* MENU ITEMS */
+#menuItems {
+    display: none;
+    position: absolute;
+    background: #fff;
+    -webkit-box-shadow: 0px 3px 18px -2px rgba(59,54,59,0.43);
+    -moz-box-shadow: 0px 3px 18px -2px rgba(59,54,59,0.43);
+    box-shadow: 0px 3px 18px -2px rgba(59,54,59,0.43);
+    width: 200px;
+    padding: 2px 5px;
+    text-align: left;
+}
 
+#menuItems ul {
+    border-bottom: 0;
+}
+
+#menuItems li a {
+    font-size: 14px;
+    color: #3C3C3C;
+}
+
+#menuItems li a:hover
+ {
+    background-color: #2E0962;
+    color: white;
+}
+
+#map_guide_popup {
+    width: 150px;
+}
+
+/* helpers */
+
+button {
+    padding: 12px;
+    font-size: 22px;
+}
+
+.btn-success {
+    padding: 12px;
+    font-size: 22px;
+    background: green;
+    color: #fff;
+}
